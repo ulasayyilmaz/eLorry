@@ -4,10 +4,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-engine = create_engine(os.getenv(ENGINEKEY), 
+engine = create_engine(os.getenv(ENGINEKEY, default=None), 
 connect_args={
     "ssl": {
-        "ca": os.getenv(ENGINECONFIG),
+        "ca": os.getenv(ENGINECONFIG, default=None),
     }
 })
 
