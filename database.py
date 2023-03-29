@@ -4,10 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-engine = create_engine(os.getenv(ENGINEKEY, default=None), 
+engine_config = os.environ['ENGINECONFIG']
+engine_key = os.environ['ENGINEKEY']
+engine = create_engine(engine_key, 
 connect_args={
     "ssl": {
-        "ca": os.getenv(ENGINECONFIG, default=None),
+        "ca": engine_config,
     }
 })
 
@@ -24,4 +26,4 @@ def put_request():
         if len(row) == 0:
             return None
         else:
-            return row[0]._mapping
+            return str(engine_config)
