@@ -5,12 +5,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 engine_key = os.environ['ENGINEKEY']
-engine_config = os.environ['ENGINECONFIG']
+#engine_config = os.environ['ENGINECONFIG']
 
 engine = create_engine(engine_key, 
 connect_args={
     "ssl": {
-        "ca": engine_config,
+        "ca": "/etc/ssl/cert.pem",
     }
 })
 
